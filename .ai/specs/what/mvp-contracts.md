@@ -7,6 +7,8 @@
 ## Acceptance criteria
 
 - Schemas define the `n2n.room.v1` envelopes, JSON-RPC requests, and room events.
+- Live schema `title` metadata uses the ThoughtKhoral display identity while
+  v1 `$id`, `$ref`, `contractVersion`, and fixture values remain unchanged.
 - Valid and invalid fixtures prove the contract validator accepts and rejects the specified payloads.
 - Protocol documentation records method semantics, structured errors, decision transitions, and compatibility rules.
 
@@ -16,7 +18,7 @@ The project publishes `n2n.room.v1` for browser connection authentication (`sess
 
 `session.authenticate` is an additive `n2n.room.v1` patch for browser connection establishment. It preserves the prior authenticated room-operation contract and release history.
 
-A future `thought-khoral.room.v2` protocol is a separate compatibility migration. It must not change v1 schema constants, fixture payloads, or immutable release tags.
+A future `thought-khoral.room.v2` protocol is a separate compatibility migration. It must not change v1 schema identifiers, constants, fixture payloads, or immutable release tags. Human-facing `title` metadata is not a v1 wire identifier.
 
 ## Explicit exclusions
 

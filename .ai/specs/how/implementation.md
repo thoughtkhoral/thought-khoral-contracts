@@ -4,7 +4,7 @@ Follow the [root MVP foundation implementation plan](../../../../.ai/specs/how/n
 
 Implementation begins only after the relevant task is approved. The implementation produces language-neutral JSON Schema, protocol documentation, and compatibility fixtures without creating a shared runtime library.
 
-The accepted local [ThoughtKhoral identity decision](../decisions/002-thoughtkhoral-identity.md) renames this project to `thought-khoral-contracts`. The `n2n.room.v1` wire value and its immutable release history remain unchanged; database and persisted values are outside this identity migration. A future `thought-khoral.room.v2` protocol requires its own approved compatibility and migration decision and must be implemented separately.
+The accepted local [ThoughtKhoral identity decision](../decisions/002-thoughtkhoral-identity.md) renames this project to `thought-khoral-contracts`. Live schema `title` metadata uses ThoughtKhoral because it is human-facing display text. The `n2n.room.v1` wire value, v1 schema `$id` and `$ref` identifiers, `contractVersion` constants, fixture payloads, and immutable release history remain unchanged; database and persisted values are outside this identity migration. A future `thought-khoral.room.v2` protocol requires its own approved compatibility and migration decision and must be implemented separately.
 
 ## Browser WebSocket authentication patch
 
