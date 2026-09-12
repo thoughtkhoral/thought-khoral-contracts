@@ -2,7 +2,7 @@
 
 ## Sole MVP responsibility
 
-`n2n-contracts` is the compatibility authority for the versioned, language-neutral `n2n.room.v1` JSON Schema artifacts, normative protocol documentation, and compatibility fixtures.
+`thought-khoral-contracts` is the compatibility authority for the versioned, language-neutral `n2n.room.v1` JSON Schema artifacts, normative protocol documentation, and compatibility fixtures.
 
 ## Acceptance criteria
 
