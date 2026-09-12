@@ -1,4 +1,4 @@
-# N:N room protocol v1
+# ThoughtKhoral room protocol v1
 
 `n2n.room.v1` defines JSON-RPC 2.0 room requests and normalized, immutable room events. Every request has `jsonrpc: "2.0"`, a non-empty string `id`, a supported `method`, and object `params`. The connection-establishment request `session.authenticate` has only a non-empty `accessToken`; authenticated room-operation payloads include `contractVersion: "n2n.room.v1"`, UUID `requestId`, UUID `roomId`, and RFC 3339 `occurredAt`.
 
@@ -40,4 +40,6 @@ Only a participant with the `human` role may invoke `decision.transition`. `conf
 
 ## Compatibility
 
-This accepted addition of the pre-authentication `session.authenticate` handshake is an additive `n2n.room.v1` patch and preserves all pre-existing authenticated room methods. Other additive optional fields are minor-compatible. Required-field, enum, method, or semantic changes require a new major contract version.
+`n2n.room.v1` remains a retained compatibility wire value for the ThoughtKhoral project. Its schema constants, fixture payloads, and immutable release tags remain unchanged.
+
+This accepted addition of the pre-authentication `session.authenticate` handshake is an additive `n2n.room.v1` patch and preserves all pre-existing authenticated room methods. Other additive optional fields are minor-compatible. Required-field, enum, method, or semantic changes require a new major contract version. A future `thought-khoral.room.v2` protocol is a separate migration and requires its own approved compatibility decision.

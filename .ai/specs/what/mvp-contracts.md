@@ -2,7 +2,7 @@
 
 ## Sole MVP responsibility
 
-`thought-khoral-contracts` is the compatibility authority for the versioned, language-neutral `n2n.room.v1` JSON Schema artifacts, normative protocol documentation, and compatibility fixtures.
+`thought-khoral-contracts` is the compatibility authority for the versioned, language-neutral `n2n.room.v1` JSON Schema artifacts, normative protocol documentation, and compatibility fixtures. `n2n.room.v1` is a retained wire-compatibility value, not this project's public identity.
 
 ## Acceptance criteria
 
@@ -15,6 +15,8 @@
 The project publishes `n2n.room.v1` for browser connection authentication (`session.authenticate`) and authenticated room operations (`room.join`, `chat.send`, `decision.propose`, and `decision.transition`), including their JSON-RPC 2.0 envelopes, `contractVersion`, RFC 4122 `requestId`, and structured error codes. Per the accepted root [browser WebSocket authentication decision](../../../../.ai/specs/decisions/002-browser-websocket-authentication.md), `session.authenticate` carries a non-empty OIDC `accessToken` and is the sole request permitted while a browser WebSocket is unauthenticated.
 
 `session.authenticate` is an additive `n2n.room.v1` patch for browser connection establishment. It preserves the prior authenticated room-operation contract and release history.
+
+A future `thought-khoral.room.v2` protocol is a separate compatibility migration. It must not change v1 schema constants, fixture payloads, or immutable release tags.
 
 ## Explicit exclusions
 

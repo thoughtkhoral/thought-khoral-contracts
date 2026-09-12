@@ -9,6 +9,19 @@ const projectRoot = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const loadJson = async (relativePath) =>
   JSON.parse(await readFile(resolve(projectRoot, relativePath), "utf8"));
 
+const packageMetadata = await loadJson("package.json");
+const protocol = await readFile(resolve(projectRoot, "protocol.md"), "utf8");
+assert.equal(
+  packageMetadata.name,
+  "thought-khoral-contracts",
+  "package metadata must use the ThoughtKhoral contracts identity",
+);
+assert.match(
+  protocol,
+  /`n2n\.room\.v1` remains a retained compatibility wire value/,
+  "protocol documentation must identify n2n.room.v1 as a retained compatibility wire value",
+);
+
 const rpcSchema = await loadJson("schemas/rpc.schema.json");
 const envelopeSchema = await loadJson("schemas/envelope.schema.json");
 const roomEventSchema = await loadJson("schemas/room-event.schema.json");
