@@ -6,7 +6,7 @@ Accepted
 
 ## Decision
 
-This repository implements root [Decision 003 — ThoughtKhoral product identity](../../../../.ai/specs/decisions/003-thoughtkhoral-product-identity.md). Its direct-child directory is renamed exactly from `n2n-contracts` to `thought-khoral-contracts`.
+This repository implements root [Decision 003 — ThoughtKhoral product identity](https://github.com/thoughtkhoral/thought-khoral/blob/main/.ai/specs/decisions/003-thoughtkhoral-product-identity.md). Its direct-child directory is renamed exactly from `n2n-contracts` to `thought-khoral-contracts`.
 
 The existing `n2n.room.v1` protocol value, schema `$id` and `$ref` identifiers,
 `contractVersion` constants, fixture payloads, and immutable release history
