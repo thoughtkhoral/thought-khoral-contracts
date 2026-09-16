@@ -7,12 +7,18 @@
 | Method | Parameters | Success result |
 | --- | --- | --- |
 | `session.authenticate` | `accessToken` | Authenticated connection identity and role. |
-| `room.join` | `roomId`, `requestId`, `occurredAt`, `afterSequence?` | Ordered room snapshot and events after the cursor. |
+| `room.join` | `roomId`, `requestId`, `occurredAt`, `afterSequence?` | Ordered room snapshot, events after the cursor, and the participant snapshot. |
 | `chat.send` | `roomId`, `requestId`, `occurredAt`, `text` | Normalized `message.created` event. |
 | `decision.propose` | `roomId`, `requestId`, `occurredAt`, `title`, `summary`, `sourceEventIds` | `decision.proposed` event. |
 | `decision.transition` | `roomId`, `requestId`, `occurredAt`, `decisionId`, `action`, `editedTitle?`, `editedSummary?` | `decision.confirmed`, `decision.edited`, or `decision.dismissed` event. |
 
 Only `confirm`, `edit`, and `dismiss` are valid actions. `edit` requires non-empty `editedTitle` and `editedSummary`; the other actions must not supply either edit field.
+
+The gateway may send the JSON-RPC notification `room.participants.updated` without
+an `id`. Its params contain `contractVersion`, `roomId`, and a `participants`
+array. Each participant has `id`, `role`, `displayName`, and `online`. The list
+contains actors found in room history and currently joined connections; presence
+is ephemeral and is not persisted as a room event.
 
 ## Browser WebSocket authentication
 
@@ -40,6 +46,6 @@ Only a participant with the `human` role may invoke `decision.transition`. `conf
 
 ## Compatibility
 
-`n2n.room.v1` remains a retained compatibility wire value for the ThoughtKhoral project. Its schema constants, fixture payloads, and immutable release tags remain unchanged.
+`n2n.room.v1` remains a retained compatibility wire value for the ThoughtKhoral project. Its schema constants, fixture payloads, and immutable release tags remain unchanged. The optional event actor `displayName`, participant snapshot, and participant notification are additive fields/messages and do not invalidate existing events or room requests.
 
 This accepted addition of the pre-authentication `session.authenticate` handshake is an additive `n2n.room.v1` patch and preserves all pre-existing authenticated room methods. Other additive optional fields are minor-compatible. Required-field, enum, method, or semantic changes require a new major contract version. A future `thought-khoral.room.v2` protocol is a separate migration and requires its own approved compatibility decision.
