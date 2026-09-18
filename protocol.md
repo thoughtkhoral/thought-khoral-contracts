@@ -19,7 +19,7 @@ Only `confirm`, `edit`, and `dismiss` are valid actions. `edit` requires non-emp
 
 `chat.send` remains room-wide when `delivery` is omitted or set to `room`. For targeted delivery, set `delivery` to `mentioned` and provide one or more `mentions`, up to 50 targets. A participant target has `type: "participant"`, a UUID `id`, and a lower-case hyphenated `token` matching the direct mention token. An alias target has `type: "alias"` and is restricted to the fixed aliases `allhumans` and `allagents`. The request schema enforces this target shape and token boundary; resolving whether a participant is currently addressable is gateway behavior.
 
-The `@allagents` alias is visible to human participants in the room as a mention target, but its delivery audience is agent-only. A targeted message is replayed only to the resolved audience, while room-wide messages are replayed to all room participants. The gateway returns `-32013` when a direct participant target cannot be resolved.
+The `@allagents` alias targets all known agents and is also visible to and allows all known human participants in the room. A targeted message is replayed only to the resolved audience, while room-wide messages are replayed to all room participants. The gateway returns `-32013` when a direct participant target cannot be resolved.
 
 The gateway may send the JSON-RPC notification `room.participants.updated` without
 an `id`. Its params contain `contractVersion`, `roomId`, and a `participants`
