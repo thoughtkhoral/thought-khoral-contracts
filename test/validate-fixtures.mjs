@@ -114,9 +114,27 @@ const assertFixtures = async (directory, expectedValid) => {
   }
 };
 
+const assertRoomEventFixtures = async (directory, expectedValid) => {
+  const fileNames = (await readdir(resolve(projectRoot, directory))).sort();
+  assert.ok(fileNames.length > 0, `${directory} must contain fixtures`);
+
+  for (const fileName of fileNames) {
+    const isValid = validateRoomEventContract(
+      await loadJson(`${directory}/${fileName}`),
+    );
+    assert.equal(
+      isValid,
+      expectedValid,
+      `${directory}/${fileName}: ${ajv.errorsText(validateRoomEvent.errors)}`,
+    );
+  }
+};
+
 await assertFixtures("fixtures/valid", true);
 await assertFixtures("fixtures/invalid", false);
+await assertRoomEventFixtures("fixtures/events/valid", true);
+await assertRoomEventFixtures("fixtures/events/invalid", false);
 
 console.log(
-  "validated session authentication and all valid fixtures; rejected all invalid fixtures",
+  "validated session authentication, request fixtures, and persisted event fixtures",
 );
