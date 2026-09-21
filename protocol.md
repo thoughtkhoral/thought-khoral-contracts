@@ -21,6 +21,17 @@ Only `confirm`, `edit`, and `dismiss` are valid actions. `edit` requires non-emp
 
 The `@allhumans` alias targets all known human participants; agents are not included unless independently mentioned. The `@allagents` alias targets all known agents and is also visible to all known human participants in the room. A targeted message is replayed only to the resolved audience, while room-wide messages are replayed to all room participants. The gateway returns `-32013` when a direct participant target cannot be resolved or its token is not canonical for the current roster.
 
+## Agent tasks
+
+The gateway may produce the additive room events `agent.task.queued`,
+`agent.task.running`, `agent.task.succeeded`, and `agent.task.failed`. Every
+task event has `taskId`, `kind`, `sourceEventId`, `requesterId`, and `agentId`.
+The initial kind is `action-items.v1`. A success also carries
+`result.actionItems`, where every item has `text` and may have explicit
+`owner` and `due` values. A failure carries only the safe
+`failure.code` (`invalid_task_input` or `execution_failed`). These are
+server-produced events; no new client task RPC method exists.
+
 The gateway may send the JSON-RPC notification `room.participants.updated` without
 an `id`. Its params contain `contractVersion`, `roomId`, and a `participants`
 array. Each participant has `id`, `role`, `displayName`, and `online`. The list
