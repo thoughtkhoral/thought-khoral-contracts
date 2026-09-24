@@ -36,3 +36,7 @@ The verifier treats the RPC schema as the fixture entry point, registers the env
 ## Agent task event patch
 
 Per root [decision 006](https://github.com/thoughtkhoral/thought-khoral/blob/main/.ai/specs/decisions/006-agent-task-dispatch.md), the retained v1 event schema adds server-produced agent task lifecycle events. Their payloads carry stable task provenance and, on success, structured action items. The patch adds no client RPC method and does not alter `chat.send` compatibility semantics.
+
+## Local A2A reference-task patch
+
+Per root [decision 007](https://github.com/thoughtkhoral/thought-khoral/blob/main/.ai/specs/decisions/007-a2a-agent-gateway-foundation.md), the retained v1 contract adds human `agent.task.start` for the one registered local reference agent and its two allowed skills. Additive room events carry task, agent, requester, skill, and context-revision provenance; only meaningful progress is persisted, external-input handoff is optional, and exactly one terminal result or safe failure closes a task. Success citations must name authorized packet sources; a handoff contains only bounded instruction, validated HTTPS URL, destination host, task ID, and expiry. Schema and invalid fixtures reject unknown skills, unsafe URLs, malformed progress/results, and citation shapes. Existing `chat.send` and Decision 006 task semantics remain compatible; no A2A transport type becomes a room-domain wire type.

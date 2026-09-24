@@ -30,6 +30,12 @@ The project publishes contract artifacts and does not provide a shared runtime
 library. Consumers should pin a released contract tag and verify compatibility
 before adopting changes.
 
+The additive local A2A task contract includes `agent.task.start`, durable
+progress, optional external-input handoff, and source-cited terminal results.
+The pinned reference agent exposes only `summarize-context` and
+`extract-action-items`; this contract does not admit arbitrary remote agents.
+See [the governed task protocol](protocol.md#governed-external-agent-tasks).
+
 ## Message mentions and delivery
 
 `chat.send` accepts optional `mentions` and `delivery` fields. The default
