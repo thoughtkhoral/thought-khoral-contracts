@@ -12,6 +12,18 @@ The accepted root [browser WebSocket authentication decision](https://github.com
 
 The gateway owns normative runtime behavior: it validates the token and its issuer, audience, signature, key identifier, algorithm, expiry, and not-before claims; it permits no room operation before successful authentication; and it closes a connection that fails authentication or misses the configured short authentication timeout. Schemas validate the message shape only and must never encode, log, or retain access tokens.
 
+## Slash decisions compatibility patch
+
+Root [decision 008](https://github.com/thoughtkhoral/thought-khoral/blob/main/.ai/specs/decisions/008-slash-decisions-and-facilitator-boundary.md)
+governs the additive retained-v1 extension. The RPC schema accepts
+`decision.delete` with a required UUID `decisionId` and permits an empty
+`sourceEventIds` array for `decision.propose`. The room-event schema requires
+`decision.deleted` to carry the deleted decision's ID, prior status, title,
+summary, and source-event IDs. Fixtures prove valid deletion and empty-source
+requests are accepted and malformed deletion requests are rejected. The
+gateway, not the schema, enforces human-only deletion and atomic audit
+persistence. Neither the v1 wire identity nor immutable history changes.
+
 ## Contract validation
 
 The fixture verifier uses the maintained `ajv` 8.20.0 release as its validation dependency. Ajv is MIT licensed and its official documentation provides the dedicated `ajv/dist/2020` export required for JSON Schema Draft 2020-12; the project uses that export rather than the default Draft 07 validator. The verifier also uses the companion `ajv-formats` 3.0.1 package so UUID and RFC 3339 `date-time` formats are assertions rather than annotations. Both packages are development-only dependencies; Node's standard library loads fixtures and no shared runtime package is produced.

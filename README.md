@@ -30,6 +30,11 @@ The project publishes contract artifacts and does not provide a shared runtime
 library. Consumers should pin a released contract tag and verify compatibility
 before adopting changes.
 
+The retained-v1 decision contract includes human-only `decision.delete` and a
+persisted `decision.deleted` audit event. `decision.propose` may have no source
+events when a human creates a decision through `/decisions`; deletion never
+removes the room's immutable event history. See [the decision protocol](protocol.md).
+
 The additive local A2A task contract includes `agent.task.start`, durable
 progress, optional external-input handoff, and source-cited terminal results.
 The pinned reference agent exposes only `summarize-context` and
