@@ -6,6 +6,18 @@ Implementation begins only after the relevant task is approved. The implementati
 
 The accepted local [ThoughtKhoral identity decision](../decisions/002-thoughtkhoral-identity.md) renames this project to `thought-khoral-contracts`. Live schema `title` metadata uses ThoughtKhoral because it is human-facing display text. The `n2n.room.v1` wire value, v1 schema `$id` and `$ref` identifiers, `contractVersion` constants, fixture payloads, and immutable release history remain unchanged; database and persisted values are outside this identity migration. A future `thought-khoral.room.v2` protocol requires its own approved compatibility and migration decision and must be implemented separately.
 
+## Message mentions and delivery patch
+
+The retained-v1 mention patch adds optional typed `mentions` and `delivery` to
+`chat.send` and normalized `mentions`, `delivery`, and `audienceIds` to
+`message.created`. Omitted delivery is `room`; `mentioned` requires one or more
+targets. The schema caps targets at 50, permits participant `{ id, token }`
+targets and the fixed `allhumans`/`allagents` aliases, and rejects invalid
+delivery values and token syntax. The fixture validator checks semantic
+uniqueness by participant ID or alias for requests and persisted events;
+schema `uniqueItems` alone catches only identical objects. Gateway resolution
+and filtering follow the root [message delivery design](https://github.com/thoughtkhoral/thought-khoral/blob/main/.ai/specs/how/message-mentions-and-delivery.md).
+
 ## Browser WebSocket authentication patch
 
 The accepted root [browser WebSocket authentication decision](https://github.com/thoughtkhoral/thought-khoral/blob/main/.ai/specs/decisions/002-browser-websocket-authentication.md) governs browser clients. This contract records `session.authenticate` as an additive `n2n.room.v1` patch: it is the only JSON-RPC method permitted before a connection is authenticated and its `params` object contains only a non-empty string `accessToken`. Existing authenticated room-method schemas and fixtures remain unchanged.
