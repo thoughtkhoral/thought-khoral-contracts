@@ -42,14 +42,14 @@ The fixture verifier uses the maintained `ajv` 8.20.0 release as its validation 
 
 ### Dependency and license verification
 
-Checked 2026-09-11. Exact installed versions, npm registry tarball URLs, integrity hashes, and SPDX license declarations are locked in the committed `package-lock.json`; the matching installed source packages' `package.json` and license files were inspected before adoption. All licenses below are compatible with this repository's JSON-schema and documentation artifact distribution.
+Initial graph checked 2026-09-11; the fast-uri patch was rechecked 2026-10-05. Exact installed versions, npm registry tarball URLs, integrity hashes, and SPDX license declarations are locked in the committed `package-lock.json`; the matching installed source packages' `package.json` and license files were inspected before adoption. All licenses below are compatible with this repository's JSON-schema and documentation artifact distribution.
 
 | Package | Version and authoritative source evidence | License | Compatibility conclusion |
 | --- | --- | --- | --- |
 | `ajv` | `8.20.0`; [upstream source](https://github.com/ajv-validator/ajv), [Draft 2020-12 documentation](https://ajv.js.org/json-schema.html); `package-lock.json` resolves `https://registry.npmjs.org/ajv/-/ajv-8.20.0.tgz` and the installed package declares the same version. | MIT | Compatible. Its dedicated `ajv/dist/2020` export supports the required Draft 2020-12 dialect. |
 | `ajv-formats` | `3.0.1`; [upstream source](https://github.com/ajv-validator/ajv-formats); `package-lock.json` resolves `https://registry.npmjs.org/ajv-formats/-/ajv-formats-3.0.1.tgz` and its source package declares `ajv: ^8.0.0` as both dependency and peer dependency. | MIT | Compatible. The locked Ajv 8.20.0 satisfies `^8.0.0`; this package supplies the UUID and date-time format validators used by the fixture verifier. |
 | `fast-deep-equal` | `3.1.3`; [upstream source](https://github.com/epoberezkin/fast-deep-equal); `package-lock.json` resolves `https://registry.npmjs.org/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz`. | MIT | Compatible. It is an Ajv transitive implementation dependency and has no contract-runtime API exposure. |
-| `fast-uri` | `3.1.7`; [upstream source](https://github.com/fastify/fast-uri); `package-lock.json` resolves `https://registry.npmjs.org/fast-uri/-/fast-uri-3.1.7.tgz`. | BSD-3-Clause | Compatible. Its permissive BSD-3-Clause terms are compatible with the artifact distribution; it is an Ajv transitive URI-processing dependency with no contract-runtime API exposure. |
+| `fast-uri` | `3.1.8`; [upstream source](https://github.com/fastify/fast-uri); `package-lock.json` resolves `https://registry.npmjs.org/fast-uri/-/fast-uri-3.1.8.tgz`. | BSD-3-Clause | Compatible. Its permissive BSD-3-Clause terms are compatible with the artifact distribution; it is an Ajv transitive URI-processing dependency with no contract-runtime API exposure. |
 | `json-schema-traverse` | `1.0.0`; [upstream source](https://github.com/epoberezkin/json-schema-traverse); `package-lock.json` resolves `https://registry.npmjs.org/json-schema-traverse/-/json-schema-traverse-1.0.0.tgz`. | MIT | Compatible. It is an Ajv transitive schema-walking dependency with no contract-runtime API exposure. |
 | `require-from-string` | `2.0.2`; [upstream source](https://github.com/floatdrop/require-from-string); `package-lock.json` resolves `https://registry.npmjs.org/require-from-string/-/require-from-string-2.0.2.tgz`. | MIT | Compatible. It is an Ajv transitive compilation dependency with no contract-runtime API exposure. |
 
@@ -64,3 +64,17 @@ Per root [decision 006](https://github.com/thoughtkhoral/thought-khoral/blob/mai
 ## Local A2A reference-task patch
 
 Per root [decision 007](https://github.com/thoughtkhoral/thought-khoral/blob/main/.ai/specs/decisions/007-a2a-agent-gateway-foundation.md), the retained v1 contract adds human `agent.task.start` for the one registered local reference agent and its two allowed skills. Additive room events carry task, agent, requester, skill, and context-revision provenance; only meaningful progress is persisted, external-input handoff is optional, and exactly one terminal result or safe failure closes a task. Success citations must name authorized packet sources; a handoff contains only bounded instruction, validated HTTPS URL, destination host, task ID, and expiry. Schema and invalid fixtures reject unknown skills, unsafe URLs, malformed progress/results, and citation shapes. Existing `chat.send` and Decision 006 task semantics remain compatible; no A2A transport type becomes a room-domain wire type.
+
+
+### Conversation Task 1 transitive security patch
+
+The approved conversation Task 1 also refreshes `fast-uri` from 3.1.7 to the
+compatible 3.1.8 patch while keeping Ajv 8.20.0 and ajv-formats 3.0.1 fixed.
+A fresh archive install on 2026-10-05 reported the upstream
+[host-normalization advisory](https://github.com/fastify/fast-uri/security/advisories/GHSA-hrr3-gc8f-f4qj),
+which identifies 3.1.8 as the patched 3.x version. The existing package remains
+a BSD-3-Clause development-only transitive dependency; it has no runtime
+transport or provider role. Record package/license/integrity evidence in the
+lockfile and require both fixture suites and a clean npm audit before publishing
+the prepared contract release. This maintenance is within
+[accepted Task 1 scope](https://github.com/thoughtkhoral/thought-khoral-contracts/issues/1).
