@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node test/validate-fixtures.mjs"
+    "test": "node test/validate-fixtures.mjs && node test/validate-conversation-fixtures.mjs"
   },
   "devDependencies": {
     "ajv": "8.20.0",

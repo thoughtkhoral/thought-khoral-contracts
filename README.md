@@ -14,7 +14,8 @@ it is not the public product identity.
 - [`protocol.md`](protocol.md) — methods, events, errors, and compatibility rules;
 - [`schemas/`](schemas/) — JSON Schema Draft 2020-12 artifacts;
 - [`fixtures/`](fixtures/) — valid and invalid compatibility examples;
-- [`test/validate-fixtures.mjs`](test/validate-fixtures.mjs) — fixture verifier;
+- [`test/validate-fixtures.mjs`](test/validate-fixtures.mjs) — retained room fixture verifier;
+- [`test/validate-conversation-fixtures.mjs`](test/validate-conversation-fixtures.mjs) — separate conversation fixture verifier;
 - [local specifications](.ai/specs/README.md).
 
 ## Validate
@@ -59,3 +60,30 @@ invalid fixtures for the normative details.
 Start with an issue in this repository. Contract changes require an approved
 specification update, compatibility evidence, and a release decision. See the
 [organization contribution guide](https://github.com/thoughtkhoral/.github/blob/main/CONTRIBUTING.md).
+
+## Agent conversation profile
+
+The approved [conversation profile](.ai/specs/how/agent-conversation-profile.md)
+defines a separate HTTP API with nine JSON Schema entry points in
+[`schemas/agent-conversation-v1/`](schemas/agent-conversation-v1/). `task.schema.json`
+accepts AcceptedTurn or TaskView; shared definitions live in `turn.schema.json`.
+Vendor the complete directory so relative references resolve. Schema identifiers
+name artifacts; they do not imply a hosted schema-discovery service.
+
+`npm test` runs both retained and conversation suites. The conversation manifest
+names each wire schema or canonicalization case and supplies synthetic trusted
+binding facts for semantic checks. Invalid fixtures must fail for their named
+reason. The verifier checks raw duplicate keys, scalar Unicode, integer tokens,
+byte limits, canonical digests, disclosure/authority bindings and replay
+comparisons beyond JSON Schema. It is a test oracle, not a shared runtime library,
+provider adapter, broker authorization implementation or persistence test.
+
+The [full bound packet vector](fixtures/agent-conversation-v1/valid/full-bound-canonical-vector.json)
+and Unicode/control/order vectors provide literal canonical bytes and independent
+SHA-256 expectations. Ordinary public human/Codex message examples also pass the
+unchanged retained event schema. Existing retained fixtures are unchanged.
+
+This implementation is prepared under [accepted issue 1](https://github.com/thoughtkhoral/thought-khoral-contracts/issues/1).
+The proposed `thought-khoral-agent-conversation-v1.0.0` tag is not published by this
+work. Consumers adopt an actual reviewed immutable release commit/archive digest,
+not a proposed tag or default branch. Release publication remains a separate gate.
