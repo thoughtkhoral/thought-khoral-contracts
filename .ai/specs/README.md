@@ -60,3 +60,11 @@ was merged into local `main` in `0499740cfc2af4c14572ebd6367b6f82dc8c8097`.
 The v1.1.0 candidate and its archive/lock pins remain unreleased. The local merge
 did not alter or republish the v1.0 release. Publication, provider use, service
 activation, and push remain separate gates.
+
+## Current POC publication checkpoint — 2026-10-07
+
+The reviewed defaults candidate integration is pushed to GitHub `main` at
+`b930b225ea7de12bb124f4cc4cdf7a87a27c7a50`. The v1.1.0 candidate source is
+available on `main`, but no v1.1.0 release or tag was published; v1.0.0 and its
+archive remain unchanged. Candidate fixture and integrity tests passed in the
+provider-free review. This is experimental POC code, not a release-readiness claim.

@@ -578,3 +578,11 @@ and fixture bytes remain unchanged. Contract tests passed from the reviewed
 candidate source, and exact merge/source commits are recorded in the local spec
 index and coordinated parent plan. No push, provider use, or service activation
 is authorized by the merge.
+
+## Pushed POC checkpoint — 2026-10-07
+
+The reviewed v1.1 defaults candidate source is pushed to GitHub `main` in
+`b930b225ea7de12bb124f4cc4cdf7a87a27c7a50`. This does not create a v1.1.0
+release/tag or change the published v1.0.0 artifact. The source remains an
+experimental candidate; its fixture and integrity tests passed in provider-free
+review, while release publication and consumer activation remain separate gates.
