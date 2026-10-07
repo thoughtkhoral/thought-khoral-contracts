@@ -13,7 +13,7 @@ separate later authorization. No completed runtime or live verification is claim
 
 - [Root Codex room requirements](https://github.com/thoughtkhoral/thought-khoral/blob/main/.ai/specs/what/codex-chat-agent.md)
 - [Root Decision 009](https://github.com/thoughtkhoral/thought-khoral/blob/main/.ai/specs/decisions/009-codex-chat-agent.md)
-- [Contracts profile](https://github.com/thoughtkhoral/thought-khoral-contracts/blob/thought-khoral-agent-conversation-v1.0.0/.ai/specs/how/agent-conversation-profile.md)
+- [Contracts profile](https://github.com/thoughtkhoral/thought-khoral-contracts/blob/main/.ai/specs/how/agent-conversation-profile.md)
 
 ## Responsibility
 

@@ -533,3 +533,37 @@ unreleased. This exception is only for this amendment's local pre-publication
 development and synthetic testing. Published v1.0 provenance/bytes remain intact.
 No release publication, shipped interoperability, merge, push, provider use or
 service activation is authorized. Whole milestone/Task9 acceptance remains open.
+
+### Local contract implementation annex
+
+The additive schema is `schemas/agent-conversation-v1/resolved-settings.schema.json`.
+`ResolvedSettingsView` is the closed object {profileVersion, roomId, agentId,
+selectedSettings}, with every field required. UUIDs use the existing canonical
+lower-case definitions; selectedSettings references the existing model,
+reasoningEffort and catalogRevision definition without changing any old schema.
+The authenticated defaults endpoint accepts no body or query and returns HTTP
+200 only after trusted room/agent binding, catalog revision and supported-pair
+validation. Existing ProfileError maps malformed IDs to 400, authentication to
+401, authority denial to 403, unavailable scope to 404, and admission/catalog/
+configured-pair failure to 503 runtime_unavailable. It never creates a task or
+terminal failure. Cache-Control is no-store and validation remains five seconds.
+
+The unchanged original 125-case manifest and retained fixtures are accompanied
+by an independent 16-case defaults manifest. Its semantic oracle checks
+room-binding, agent-binding, catalog-stale and unsupported-settings separately
+from JSON Schema and strict raw-JSON duplicate-key rejection. Trusted model
+data may list the policy-selected model after other models.
+
+The local builder archives full repository committed bytes using git archive;
+its candidate directory is the exact full commit and cannot be overwritten.
+The vendor payload preserves source-relative paths for the complete conversation
+schema directory, original and additive fixture directories, semantic oracle and
+both fixture runners. The closed lock records profile, unreleased-local-candidate
+status, proposedTag, repository, exact commit, archive filename/digest/prefix,
+original baseTag/baseCommit/baseArchiveSha256 and sorted per-file SHA-256 values.
+The lock digest is a separate sidecar and must also be anchored in consumer code.
+Verification requires the external anchor and rejects altered metadata, archive,
+payload, symlinks and unexpected files. Two builds of one commit must be byte
+identical, and the extracted full archive must run its own npm fixture/test suite.
+These implemented contract artifacts do not establish published interoperability
+or any broker/UI/runtime acceptance.

@@ -95,3 +95,63 @@ Only a participant with the `human` role may invoke `decision.delete`. The gatew
 `n2n.room.v1` remains a retained compatibility wire value for the ThoughtKhoral project. Existing room requests and events remain compatible, and the deletion method/event and empty-source create rule are additive within this retained contract. The optional event actor `displayName`, participant snapshot, and participant notification are additive fields/messages and do not invalidate existing events or room requests.
 
 This accepted addition of the pre-authentication `session.authenticate` handshake is an additive `n2n.room.v1` patch and preserves all pre-existing authenticated room methods. Other additive optional fields are minor-compatible. Required-field, enum, method, or semantic changes require a new major contract version. A future `thought-khoral.room.v2` protocol is a separate migration and requires its own approved compatibility decision.
+
+
+## Separate agent conversation HTTP profile
+
+The approved [agent conversation profile](.ai/specs/how/agent-conversation-profile.md)
+and [versioning decision](.ai/specs/decisions/003-conversation-profile-versioning.md)
+govern `thought-khoral.agent-conversation.v1` at `/api/agent-conversations/v1`
+and its authenticated workload/control interfaces. The normative profile owns
+exact field lists, error mapping, authority and canonicalization semantics.
+
+The artifacts are `schemas/agent-conversation-v1/{turn,view,catalog,task,input,
+update,result,error,ack,resolved-settings}.schema.json`. All objects are closed. Consumers load the
+complete schema directory, including shared definitions in `turn.schema.json`.
+Schema validation must be combined with the normative semantic checks; shape
+validation alone cannot authorize a room, acknowledge native history, validate
+current leases, or provide idempotent database persistence.
+
+A human invocation submits one profile turn, whose accepted prompt is an ordinary
+room-wide message event. The final public assistant reply is also an ordinary
+message event. Conversation task lifecycle, model/effort settings and usage are
+separate profile objects; native IDs and lease tokens are never browser fields.
+An ordinary retained `chat.send` message does not acquire Codex inference behavior.
+No retained schema, wire enum, event discriminator or fixture is changed here.
+
+The [fixture manifest](fixtures/agent-conversation-v1/manifest.json) documents
+positive/negative schema and semantic cases with synthetic validation contexts,
+including raw JSON and canonical vectors. Stateful comparisons exercise supplied
+prior records; consumers still need their own transaction/recovery tests.
+
+Breaking conversation changes require a new profile major identifier/API path.
+Consumers pin the published reviewed release commit and archive digest after the
+separate release gate; these artifacts do not claim a live compatible deployment.
+
+### Additive resolved defaults query
+
+The [approved defaults amendment](.ai/specs/how/agent-conversation-profile.md#approved-defaults-discovery-amendment--2026-10-07)
+adds `GET /api/agent-conversations/v1/rooms/{roomId}/agents/{agentId}/defaults`
+with no body or query. HTTP 200 returns the closed `ResolvedSettingsView`:
+`{profileVersion, roomId, agentId, selectedSettings}`. The profile remains
+`thought-khoral.agent-conversation.v1`; `selectedSettings` reuses the required
+model, reasoningEffort and catalogRevision shape from `turn.schema.json`.
+Room/agent bindings, current catalog revision and supported model/effort pair
+must be verified against trusted current authority. Model list order is not a
+default-selection rule.
+
+Malformed IDs map to 400; absent/invalid authentication to 401; authority denial
+to 403; unavailable room/agent scope to 404; admission, catalog or configured
+default-pair failure to 503 with `runtime_unavailable`. Error bodies use the
+existing closed `ProfileError`. Responses use `Cache-Control: no-store` and the
+current five-second settings-validation bound. This read creates no conversation,
+task, human event, lease or native state and cannot produce a terminal task failure.
+It contains no effective-settings confirmation or private/native identifiers.
+
+The additive [fixture manifest](fixtures/agent-conversation-v1.1/manifest.json)
+is independent of the unchanged 125-case v1.0 manifest. The proposed v1.1.0
+artifact is an unreleased local candidate built from an exact clean source
+commit, with a full repository TAR, closed lock and per-file SHA-256 mapping.
+Consumers must anchor the lock SHA-256 outside the candidate and verify it,
+the archive and vendored payload before adoption. A mutable lock's own digest
+sidecar alone does not establish trust. Publication remains a separate gate.
