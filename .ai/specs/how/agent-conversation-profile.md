@@ -531,8 +531,10 @@ isolated consumers may pin a reproducible local candidate from an exact committe
 contracts revision, verified archive and per-file SHA-256 values, clearly marked
 unreleased. This exception is only for this amendment's local pre-publication
 development and synthetic testing. Published v1.0 provenance/bytes remain intact.
-No release publication, shipped interoperability, merge, push, provider use or
-service activation is authorized. Whole milestone/Task9 acceptance remains open.
+The reviewed source was merged to local `main` under explicit user
+authorization; this does not authorize release publication, shipped
+interoperability, push, provider use or service activation. Whole milestone/Task9
+acceptance remains open.
 
 ### Local contract implementation annex
 
@@ -567,3 +569,12 @@ payload, symlinks and unexpected files. Two builds of one commit must be byte
 identical, and the extracted full archive must run its own npm fixture/test suite.
 These implemented contract artifacts do not establish published interoperability
 or any broker/UI/runtime acceptance.
+
+## Local main integration checkpoint — 2026-10-07
+
+The reviewed v1.1 defaults candidate source is merged into local `main`; its
+proposed release remains unpublished. The existing v1.0 release/tag, artifact,
+and fixture bytes remain unchanged. Contract tests passed from the reviewed
+candidate source, and exact merge/source commits are recorded in the local spec
+index and coordinated parent plan. No push, provider use, or service activation
+is authorized by the merge.
