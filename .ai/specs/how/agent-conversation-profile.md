@@ -496,3 +496,74 @@ an explicitly supplied prior record and frozen binding; they do not claim to
 prove persistence or provider execution behavior. Raw task/thread/turn usage
 binding is exercised by a fixture validation context, while runtime telemetry
 normalization remains Task 4's responsibility.
+
+## Approved defaults-discovery amendment — 2026-10-07
+
+The maintainer approved the [visible server defaults design](https://github.com/thoughtkhoral/thought-khoral-codex-agent/blob/main/.ai/specs/how/default-settings-discovery-proposal.md) in
+this conversation on 2026-10-07 after an explicit specification approval request.
+It authorizes coordinated local implementation and synthetic verification of
+the additive authenticated defaults query and independently optional model/effort
+controls, including the F1 initial/reset effort-only deadlock. The accepted
+design is the governing amendment to earlier default-visibility wording.
+
+The contracts owner defines `ResolvedSettingsView` at
+`GET /api/agent-conversations/v1/rooms/{roomId}/agents/{agentId}/defaults` in
+new immutable artifact `thought-khoral-agent-conversation-v1.1.0`, retaining the
+v1 profile/namespace and all existing published v1.0 schema/fixture bytes.
+The broker validates authenticated room/agent authority, current admission,
+catalog revision, policy-default pair and five-second bound before responding.
+The read has no task/event/conversation/lease/native-state mutation, exposes no
+effective-settings confirmation, credentials or private/native identifiers,
+uses the existing safe ProfileError/HTTP mapping and `Cache-Control: no-store`.
+There is no inferred catalog-order model or inference fallback.
+
+The UI resolves and displays the concrete explicit next-turn pair when absent
+or explicitly New/reset; restored continuation uses accepted shared settings.
+Both capabilities allow both controls; effort-only keeps the resolved model
+read-only; model-only keeps the displayed model-specific catalog default effort
+read-only; neither capability retains the settings-free path. Unsupported
+controls stay uneditable and no hidden control blocks a valid required choice.
+Catalog/pair mismatch requires bounded refresh or an explicit unavailable state.
+A still-valid explicit pair is not replaced after a deployment-default-only change.
+
+As a scoped exception to the earlier published-artifact-first execution order,
+isolated consumers may pin a reproducible local candidate from an exact committed
+contracts revision, verified archive and per-file SHA-256 values, clearly marked
+unreleased. This exception is only for this amendment's local pre-publication
+development and synthetic testing. Published v1.0 provenance/bytes remain intact.
+No release publication, shipped interoperability, merge, push, provider use or
+service activation is authorized. Whole milestone/Task9 acceptance remains open.
+
+### Local contract implementation annex
+
+The additive schema is `schemas/agent-conversation-v1/resolved-settings.schema.json`.
+`ResolvedSettingsView` is the closed object {profileVersion, roomId, agentId,
+selectedSettings}, with every field required. UUIDs use the existing canonical
+lower-case definitions; selectedSettings references the existing model,
+reasoningEffort and catalogRevision definition without changing any old schema.
+The authenticated defaults endpoint accepts no body or query and returns HTTP
+200 only after trusted room/agent binding, catalog revision and supported-pair
+validation. Existing ProfileError maps malformed IDs to 400, authentication to
+401, authority denial to 403, unavailable scope to 404, and admission/catalog/
+configured-pair failure to 503 runtime_unavailable. It never creates a task or
+terminal failure. Cache-Control is no-store and validation remains five seconds.
+
+The unchanged original 125-case manifest and retained fixtures are accompanied
+by an independent 16-case defaults manifest. Its semantic oracle checks
+room-binding, agent-binding, catalog-stale and unsupported-settings separately
+from JSON Schema and strict raw-JSON duplicate-key rejection. Trusted model
+data may list the policy-selected model after other models.
+
+The local builder archives full repository committed bytes using git archive;
+its candidate directory is the exact full commit and cannot be overwritten.
+The vendor payload preserves source-relative paths for the complete conversation
+schema directory, original and additive fixture directories, semantic oracle and
+both fixture runners. The closed lock records profile, unreleased-local-candidate
+status, proposedTag, repository, exact commit, archive filename/digest/prefix,
+original baseTag/baseCommit/baseArchiveSha256 and sorted per-file SHA-256 values.
+The lock digest is a separate sidecar and must also be anchored in consumer code.
+Verification requires the external anchor and rejects altered metadata, archive,
+payload, symlinks and unexpected files. Two builds of one commit must be byte
+identical, and the extracted full archive must run its own npm fixture/test suite.
+These implemented contract artifacts do not establish published interoperability
+or any broker/UI/runtime acceptance.

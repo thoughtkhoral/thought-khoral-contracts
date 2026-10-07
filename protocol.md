@@ -106,7 +106,7 @@ and its authenticated workload/control interfaces. The normative profile owns
 exact field lists, error mapping, authority and canonicalization semantics.
 
 The artifacts are `schemas/agent-conversation-v1/{turn,view,catalog,task,input,
-update,result,error,ack}.schema.json`. All objects are closed. Consumers load the
+update,result,error,ack,resolved-settings}.schema.json`. All objects are closed. Consumers load the
 complete schema directory, including shared definitions in `turn.schema.json`.
 Schema validation must be combined with the normative semantic checks; shape
 validation alone cannot authorize a room, acknowledge native history, validate
@@ -127,3 +127,31 @@ prior records; consumers still need their own transaction/recovery tests.
 Breaking conversation changes require a new profile major identifier/API path.
 Consumers pin the published reviewed release commit and archive digest after the
 separate release gate; these artifacts do not claim a live compatible deployment.
+
+### Additive resolved defaults query
+
+The [approved defaults amendment](.ai/specs/how/agent-conversation-profile.md#approved-defaults-discovery-amendment--2026-10-07)
+adds `GET /api/agent-conversations/v1/rooms/{roomId}/agents/{agentId}/defaults`
+with no body or query. HTTP 200 returns the closed `ResolvedSettingsView`:
+`{profileVersion, roomId, agentId, selectedSettings}`. The profile remains
+`thought-khoral.agent-conversation.v1`; `selectedSettings` reuses the required
+model, reasoningEffort and catalogRevision shape from `turn.schema.json`.
+Room/agent bindings, current catalog revision and supported model/effort pair
+must be verified against trusted current authority. Model list order is not a
+default-selection rule.
+
+Malformed IDs map to 400; absent/invalid authentication to 401; authority denial
+to 403; unavailable room/agent scope to 404; admission, catalog or configured
+default-pair failure to 503 with `runtime_unavailable`. Error bodies use the
+existing closed `ProfileError`. Responses use `Cache-Control: no-store` and the
+current five-second settings-validation bound. This read creates no conversation,
+task, human event, lease or native state and cannot produce a terminal task failure.
+It contains no effective-settings confirmation or private/native identifiers.
+
+The additive [fixture manifest](fixtures/agent-conversation-v1.1/manifest.json)
+is independent of the unchanged 125-case v1.0 manifest. The proposed v1.1.0
+artifact is an unreleased local candidate built from an exact clean source
+commit, with a full repository TAR, closed lock and per-file SHA-256 mapping.
+Consumers must anchor the lock SHA-256 outside the candidate and verify it,
+the archive and vendored payload before adoption. A mutable lock's own digest
+sidecar alone does not establish trust. Publication remains a separate gate.

@@ -138,6 +138,17 @@ export function semanticErrors(schema, value, trusted = {}) {
   };
 
   if (value.profileVersion !== undefined) check(value.profileVersion === PROFILE, 'profile-binding');
+  if (schema === 'resolved-settings') {
+    binding(value.roomId, 'roomId', 'room-binding');
+    binding(value.agentId, 'agentId', 'agent-binding');
+    if (trusted.catalogRevision !== undefined) {
+      check(value.selectedSettings.catalogRevision === trusted.catalogRevision, 'catalog-stale');
+    }
+    if (trusted.models !== undefined) {
+      const model = trusted.models.find(model => model.id === value.selectedSettings.model);
+      check(model !== undefined && model.efforts.includes(value.selectedSettings.reasoningEffort), 'unsupported-settings');
+    }
+  }
   if (schema === 'turn') {
     binding(value.roomId, 'roomId', 'room-binding'); binding(value.agentId, 'agentId', 'agent-binding');
     const ids = value.mentions.filter(m => m.type === 'participant').map(m => m.id);
