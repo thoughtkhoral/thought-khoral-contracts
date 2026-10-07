@@ -9,6 +9,8 @@ documentation, and compatibility fixtures.
 MVP / active development. The v1 wire identifier is retained for compatibility;
 it is not the public product identity.
 
+For the cross-project Codex conversation status and remaining gates, see the [shared status guide](https://github.com/thoughtkhoral/thought-khoral/blob/main/docs/codex-conversation-status.md).
+
 ## Contents
 
 - [`protocol.md`](protocol.md) — methods, events, errors, and compatibility rules;
