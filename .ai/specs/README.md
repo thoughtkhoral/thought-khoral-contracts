@@ -6,6 +6,22 @@ See the [root specification index](https://github.com/thoughtkhoral/thought-khor
 
 For the coordinated Codex conversation status across all projects, see the [shared status guide](https://github.com/thoughtkhoral/thought-khoral/blob/main/docs/codex-conversation-status.md).
 
+## Current verification boundary — 2026-11-19
+
+The published conversation v1.0.0 release remains immutable. The reviewed
+v1.1 defaults-discovery source is on GitHub `main`, but its candidate artifact
+is unreleased. Only exact reviewed candidate pins authorize the approved local
+synthetic consumer tests; the default branch is not a released artifact.
+
+The [owning conversation design](how/agent-conversation-profile.md) and
+[coordinated plan](https://github.com/thoughtkhoral/thought-khoral/blob/main/.ai/specs/how/codex-room-conversations-implementation-plan.md)
+are authoritative for implementation and evidence. The later native Linux CI
+closes only the worker's tested build/runtime/package-policy gates. It does not
+retest this repository or close Task 9 packaged room-stack, rendered-browser,
+live-provider, v1.1 publication or production/release acceptance. Earlier dated
+checkpoints below preserve the state at their recording time; their local-only,
+unmerged and pending-push wording is historical.
+
 ## Local areas
 
 - [What: MVP contracts](what/mvp-contracts.md)

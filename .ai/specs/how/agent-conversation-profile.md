@@ -19,6 +19,23 @@ compatibility fixtures. This Markdown specification fixes the v1 field shapes;
 its JSON Schema and fixture artifacts are created in implementation Task 1.
 No released schema or runtime compatibility is claimed before Task 1 verification.
 
+## Current implementation and evidence — 2026-11-19
+
+The published conversation v1.0.0 release remains immutable. The reviewed
+v1.1 defaults-discovery source is on GitHub `main`, but its candidate artifact
+is unreleased. Only exact reviewed candidate pins authorize the approved local
+synthetic consumer tests; the default branch is not a released artifact.
+
+The [coordinated plan](https://github.com/thoughtkhoral/thought-khoral/blob/main/.ai/specs/how/codex-room-conversations-implementation-plan.md)
+records subsequent native Linux worker acceptance. That evidence closes only
+the tested worker gates and adds no new contract, broker or mediator runtime
+verification. Task 9 packaged room-stack, rendered-browser and live-provider
+acceptance, v1.1 artifact publication and production/release acceptance remain
+open. Approval-era status wording and dated checkpoints below retain their
+historical scope; later integration/publication checkpoints supersede earlier
+local-only or unmerged statements. No runtime tests were rerun for this
+Markdown synchronization.
+
 ## Invocation and control interfaces
 
 The selected compatibility strategy is a separately versioned HTTPS API at
