@@ -130,6 +130,11 @@ separate release gate; these artifacts do not claim a live compatible deployment
 
 ### Additive resolved defaults query
 
+This section describes the approved unreleased v1.1 candidate. The published
+v1.0.0 artifact does not contain `ResolvedSettingsView`; the
+[owning specification checkpoint](.ai/specs/README.md#published-conversation-artifact)
+records immutable v1.0 provenance and the separately pinned candidate.
+
 The [approved defaults amendment](.ai/specs/how/agent-conversation-profile.md#approved-defaults-discovery-amendment--2026-10-07)
 adds `GET /api/agent-conversations/v1/rooms/{roomId}/agents/{agentId}/defaults`
 with no body or query. HTTP 200 returns the closed `ResolvedSettingsView`:

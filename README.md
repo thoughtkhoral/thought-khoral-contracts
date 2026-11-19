@@ -86,9 +86,12 @@ SHA-256 expectations. Ordinary public human/Codex message examples also pass the
 unchanged retained event schema. Existing retained fixtures are unchanged.
 
 This implementation is prepared under [accepted issue 1](https://github.com/thoughtkhoral/thought-khoral-contracts/issues/1).
-The proposed `thought-khoral-agent-conversation-v1.0.0` tag is not published by this
-work. Consumers adopt an actual reviewed immutable release commit/archive digest,
-not a proposed tag or default branch. Release publication remains a separate gate.
+The [published `thought-khoral-agent-conversation-v1.0.0` release](https://github.com/thoughtkhoral/thought-khoral-contracts/releases/tag/thought-khoral-agent-conversation-v1.0.0)
+was authorized on 2026-10-05 at `85baf86e574276fcd036e53e23641af6aad602f9`;
+its TAR SHA-256 is `0038fdbf858db013c4a269aeedbca51a5db9128a2f1d6e39754f92ba60fd8f36`.
+Consumers pin that immutable release and verify its archive. The additive v1.1
+defaults artifact below remains unreleased; source publication on `main` does
+not publish a contract release. See the [owning specification checkpoint](.ai/specs/README.md#published-conversation-artifact).
 
 ### Unreleased defaults candidate
 
