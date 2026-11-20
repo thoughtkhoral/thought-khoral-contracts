@@ -1,5 +1,7 @@
 # ThoughtKhoral contracts
 
+[Project documentation](docs/README.md) · [Documentation requirements](.ai/specs/what/public-documentation.md)
+
 ## Current workspace context — 2026-11-20
 
 Conversation v1.1.0 is published at frozen source `f1c8621810c8c121c1aafc8e5a342d6626c4b843`; the TAR, lock, sidecar and all 156 payload hashes were verified from a fresh download. The source includes the approved fast-uri 3.1.9 correction and passing source/extracted tests and online audits. The original synthetic candidate keeps its immutable candidate metadata; v1.0 artifacts are unchanged.
