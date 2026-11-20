@@ -1,0 +1,115 @@
+# Approved release audit correction: fast-uri 3.1.9
+
+> Applicability: this approved How describes the reviewed separate source
+> branch and its exact tested commits. Canonical main retains its existing
+> runtime until explicit integration; this copy updates specification discovery
+> and documentation only.
+
+Status: approved by the maintainer's “approve” on 2026-11-20 after review of
+this exact correction and its isolated passing candidate. This is the bounded
+dependency exception to the [release preparation scope](conversation-v1.1-release-preparation.md).
+Record this approval before changing the lock. Publication remains a separate
+later action; the earlier Task 9 approval alone did not grant this exception.
+
+## Finding and exact correction
+
+The locked development-only `fast-uri 3.1.8`, used by Ajv's fixture validator,
+is affected by four advisories returned by `npm audit`: GHSA-w74x-v6f9-j3xg,
+GHSA-xhq7-xmqj-769h, GHSA-wjr9-j795-jxcr and GHSA-333x-w4r6-6crp. The audit
+reports one moderate vulnerable package, with two moderate and two low
+advisories. The affected 3.x ranges end before 3.1.9. This is a verifier
+dependency; no contract runtime library or provider integration is added.
+
+Proposed change: in `package-lock.json`, change only
+`packages["node_modules/fast-uri"]` fields `version`, `resolved`, `integrity`
+to the following exact values:
+
+```json
+{
+  "version": "3.1.9",
+  "resolved": "https://registry.npmjs.org/fast-uri/-/fast-uri-3.1.9.tgz",
+  "integrity": "sha512-hS/0Wt3Ya043oKXs0sIxrMpKQITXhMLIrVAKKXi4gozGC9v7YRWVnXIZzjNPTO02M9BdxLCWqK1yRXgNziVyJQ=="
+}
+```
+
+The complete candidate lock SHA-256 is
+`26b7382546939bc1a5e371ecb99f1655b617f381eea27b72d9400fc3c49ff585`.
+Ajv 8.20.0, ajv-formats 3.0.1, dependency declarations, every other locked
+package and all schema/fixture/oracle bytes stay unchanged. Ajv's existing
+`^3.0.1` range admits this 3.1.9 patch. The BSD-3-Clause license bytes match
+3.1.8 exactly. Update the implementation How's development-dependency evidence
+row and derived status after applying the approved correction; do not rewrite
+historical audit results or the immutable candidate archive/lock.
+
+## Isolated evidence
+
+Candidate path:
+`/private/tmp/thoughtkhoral-task9-fast-uri-319-ji73184x/contracts`.
+It is a disposable copy, not the release branch or canonical checkout.
+Registry metadata and npm's integrity-checked install agree on the exact
+version, archive URL and integrity above. An independent JSON comparison found
+only those three lock fields changed, with identical package.json and license
+bytes. `npm ci --ignore-scripts` and online `npm audit --audit-level=low`
+passed with zero vulnerabilities.
+
+The full candidate `npm test` passed retained room validation, 125 conversation
+fixtures, 16 defaults fixtures, six candidate integrity tests and five new
+release-preparation tests. The latter also build from a self-contained source
+snapshot. This candidate evidence does not approve the correction, publish an
+artifact or establish packaged-stack/live acceptance.
+
+## Apply and acceptance
+
+After approval, record acceptance in this How and commit it before replacing
+the lock with these exact tested bytes. Install the lock, rerun all tests and
+the online audit in the actual release worktree, then regenerate both release
+archives from the resulting clean committed source. Confirm identical repeated
+TAR/lock bytes and all 156 candidate payload hashes, with all 135 v1.0 schema
+and fixture hashes preserved. The source lock's correction changes full archive
+provenance but does not change the schema/fixture consumer payload.
+
+Run the extracted archive's complete tests and audit too. Retain any earlier
+3.1.8 artifacts as blocked diagnostic evidence; never publish them as passing
+release inputs. Only the newly verified concrete release package can be
+presented for separate publication approval.
+
+## Applied verification — 2026-11-20
+
+Approval was committed first at `a5c359f`; implementation source is
+`f1c8621810c8c121c1aafc8e5a342d6626c4b843`. The exact approved lock digest
+matches. Full tests pass in the release worktree and extracted archive:
+retained room validation, 125 conversation fixtures, 16 defaults fixtures,
+six candidate integrity tests and five release-preparation tests. Both online
+audits report zero vulnerabilities. Independent review confirmed only the
+three approved fields changed, without an actionable finding; dependency
+declarations, remaining lock entries and BSD-3-Clause license bytes match.
+
+Two clean-source preparations are byte-identical. Intended v1.1 TAR SHA-256 is
+`b0370e43627ce6044852df75bfbc4b749d904aa9cedcfc558c61bb4e07dc95ff`;
+release lock SHA-256 is
+`b7f3ad928c5c17be7e936da4959b7e7e8555bb4ed3602fa62f71a8721f042d8f`.
+All 156 approved candidate payload hashes and 135 retained v1.0 schema/fixture
+hashes are preserved. The earlier 3.1.8 diagnostic artifacts remain blocked
+historical evidence. Corrected inputs and publication-review notes are retained
+under `/private/tmp/thoughtkhoral-task9-v1.1-corrected-20261120/`.
+
+This closes the local dependency correction and release-input verification,
+not source/tag/release publication, consumer transition or Task 9 acceptance.
+The frozen release source is `f1c8621`; this later evidence record changes only
+documentation and does not change that source archive's identity.
+
+## Authorized publication checkpoint
+
+The maintainer subsequently authorized the concrete source/tag/release action
+with “proceed”. The source branch and annotated v1.1.0 tag are published, with
+the tag independently verified to peel to frozen source `f1c8621`. GitHub
+release `452810808` was published at `2026-11-20T14:44:18Z` with exactly the
+reviewed TAR, lock and digest sidecar. Fresh downloads match both reviewed
+digests and all 156 payload hashes; the verifier from the downloaded archive
+passes using the external reviewed lock anchor. Its `publication: not-performed`
+field describes that verifier command, not the separately established release.
+
+The [retained publication manifest](../../../docs/evidence/conversation-v1.1-publication-2026-11-20.json)
+records the annotated tag object, peeled source, release ID and asset IDs/URLs/
+digests. No artifact was overwritten and frozen tag source remains unchanged.
+Consumer adoption and Task 9 packaged/browser/live gates remain open.

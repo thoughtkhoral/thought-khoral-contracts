@@ -1,5 +1,19 @@
 # Room conversation integration profile
 
+## Current workspace state — 2026-11-20
+
+Conversation v1.1.0 is published at frozen source `f1c8621810c8c121c1aafc8e5a342d6626c4b843`; the TAR, lock, sidecar and all 156 payload hashes were verified from a fresh download. The source includes the approved fast-uri 3.1.9 correction and passing source/extracted tests and online audits. The original synthetic candidate keeps its immutable candidate metadata; v1.0 artifacts are unchanged.
+
+This canonical checkout has not merged the published release branch and retains
+its earlier tooling/dependency lock. Use the release tag for artifact verification;
+do not infer that this checkout already contains the release-preparation changes.
+
+See the [root workspace authority](https://github.com/thoughtkhoral/thought-khoral/blob/main/.ai/specs/how/workspace-state.md) for exact source/release
+identities, preserved source snapshots and remaining gates. Documentation-only
+HEADs are not substitutions for frozen acceptance commits. Earlier dated
+checkpoints retain their historical evidence; no runtime suite was rerun for
+this prose refresh.
+
 ## Status and ownership
 
 Approved by the project maintainer in the Codex working session on 2026-10-05,
@@ -19,7 +33,9 @@ compatibility fixtures. This Markdown specification fixes the v1 field shapes;
 its JSON Schema and fixture artifacts are created in implementation Task 1.
 No released schema or runtime compatibility is claimed before Task 1 verification.
 
-## Current implementation and evidence — 2026-11-19
+<a id="current-implementation-and-evidence--2026-11-19"></a>
+
+## Historical implementation and evidence — 2026-11-19
 
 The published conversation v1.0.0 release remains immutable. The reviewed
 v1.1 defaults-discovery source is on GitHub `main`, but its candidate artifact
