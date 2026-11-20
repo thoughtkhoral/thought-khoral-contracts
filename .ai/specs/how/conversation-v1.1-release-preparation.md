@@ -68,3 +68,14 @@ the actual source commit, intended tag and asset hashes. Only after publication
 and download verification may consumers adopt the release and the Task 9 live
 profile freeze those release identities. Stop at this concrete publication
 checkpoint rather than manufacturing released provenance.
+
+## Baseline test harness correction
+
+The unchanged baseline on Node 25.5.0 fails its candidate test when `git show`
+returns the intentional 1,050,802-byte context-overflow fixture: spawnSync's
+default 1 MiB buffer produces ENOBUFS and no exit status. A controlled 2 MiB
+probe returns all bytes with exit zero. Increase only that test's bounded Git
+blob buffer to 2 MiB and expose subprocess errors in its assertion. Keep the
+oversized negative fixture and all byte comparisons intact. This is necessary
+to run the required full extracted-archive verification; no runtime bound or
+contract byte changes.
