@@ -1,5 +1,18 @@
 # ThoughtKhoral contracts
 
+## Current workspace context — 2026-11-20
+
+Conversation v1.1.0 is published at frozen source `f1c8621810c8c121c1aafc8e5a342d6626c4b843`; the TAR, lock, sidecar and all 156 payload hashes were verified from a fresh download. The source includes the approved fast-uri 3.1.9 correction and passing source/extracted tests and online audits. The original synthetic candidate keeps its immutable candidate metadata; v1.0 artifacts are unchanged.
+
+This canonical checkout has not merged the published release branch and retains
+its earlier tooling/dependency lock. Use the release tag for artifact verification;
+do not infer that this checkout already contains the release-preparation changes.
+
+Derived from the [local specification index](.ai/specs/README.md) and
+[root workspace authority](https://github.com/thoughtkhoral/thought-khoral/blob/main/.ai/specs/how/workspace-state.md).
+The cited tests retain their original source identities; this documentation
+refresh adds no activation, publication or runtime acceptance.
+
 `thought-khoral-contracts` is the compatibility authority for the versioned,
 language-neutral v1 room-contract JSON Schema artifacts, normative protocol
 documentation, and compatibility fixtures.
@@ -89,9 +102,11 @@ This implementation is prepared under [accepted issue 1](https://github.com/thou
 The [published `thought-khoral-agent-conversation-v1.0.0` release](https://github.com/thoughtkhoral/thought-khoral-contracts/releases/tag/thought-khoral-agent-conversation-v1.0.0)
 was authorized on 2026-10-05 at `85baf86e574276fcd036e53e23641af6aad602f9`;
 its TAR SHA-256 is `0038fdbf858db013c4a269aeedbca51a5db9128a2f1d6e39754f92ba60fd8f36`.
-Consumers pin that immutable release and verify its archive. The additive v1.1
-defaults artifact below remains unreleased; source publication on `main` does
-not publish a contract release. See the [owning specification checkpoint](.ai/specs/README.md#published-conversation-artifact).
+Consumers pin that immutable release and verify its archive. The separate
+[v1.1.0 release](https://github.com/thoughtkhoral/thought-khoral-contracts/releases/tag/thought-khoral-agent-conversation-v1.1.0)
+is published at source `f1c8621`; its freshly downloaded TAR/lock/sidecar and
+all payload hashes verify. This canonical checkout retains historical candidate
+tooling; use the exact release tag/source for release-preparation verification. See the [owning specification checkpoint](.ai/specs/README.md#published-conversation-artifact).
 
 ### Unreleased defaults candidate
 

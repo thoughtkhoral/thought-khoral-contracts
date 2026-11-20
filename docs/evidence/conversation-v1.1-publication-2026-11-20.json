@@ -1,0 +1,59 @@
+{
+  "status": "published-and-downloaded-assets-verified",
+  "approval": "Maintainer proceeded after concrete publication review on 2026-11-20",
+  "repository": "thoughtkhoral/thought-khoral-contracts",
+  "tag": "thought-khoral-agent-conversation-v1.1.0",
+  "tagObject": "b63c96c74b35db1b20a914fc1520d7cc379028db",
+  "peeledSourceCommit": "f1c8621810c8c121c1aafc8e5a342d6626c4b843",
+  "sourceBranch": "codex/task9-contract-release-20261120",
+  "release": {
+    "id": 452810808,
+    "html_url": "https://github.com/thoughtkhoral/thought-khoral-contracts/releases/tag/thought-khoral-agent-conversation-v1.1.0",
+    "published_at": "2026-11-20T14:44:18Z",
+    "draft": false,
+    "prerelease": false,
+    "target_commitish": "main"
+  },
+  "releaseMetadataNote": "Existing annotated tag and independently checked peeledSourceCommit are authoritative; target_commitish is GitHub release metadata, not a tag retargeting claim.",
+  "assets": {
+    "lock.json": {
+      "id": 772181678,
+      "name": "lock.json",
+      "size": 22034,
+      "digest": "sha256:b7f3ad928c5c17be7e936da4959b7e7e8555bb4ed3602fa62f71a8721f042d8f",
+      "browser_download_url": "https://github.com/thoughtkhoral/thought-khoral-contracts/releases/download/thought-khoral-agent-conversation-v1.1.0/lock.json"
+    },
+    "lock.sha256": {
+      "id": 772181679,
+      "name": "lock.sha256",
+      "size": 65,
+      "digest": "sha256:6cfcd1260b6c82b2d6df210baacb9fbdeff60f5adb4b932d8c392f3557304c5c",
+      "browser_download_url": "https://github.com/thoughtkhoral/thought-khoral-contracts/releases/download/thought-khoral-agent-conversation-v1.1.0/lock.sha256"
+    },
+    "thought-khoral-agent-conversation-v1.1.0.tar": {
+      "id": 772181677,
+      "name": "thought-khoral-agent-conversation-v1.1.0.tar",
+      "size": 2539520,
+      "digest": "sha256:b0370e43627ce6044852df75bfbc4b749d904aa9cedcfc558c61bb4e07dc95ff",
+      "browser_download_url": "https://github.com/thoughtkhoral/thought-khoral-contracts/releases/download/thought-khoral-agent-conversation-v1.1.0/thought-khoral-agent-conversation-v1.1.0.tar"
+    }
+  },
+  "verification": {
+    "freshDownload": true,
+    "archiveGitSource": "f1c8621810c8c121c1aafc8e5a342d6626c4b843",
+    "payloadFiles": 156,
+    "unchangedPublishedV1SchemaFixtureFiles": 135,
+    "sourceDependencyLockSha256": "26b7382546939bc1a5e371ecb99f1655b617f381eea27b72d9400fc3c49ff585",
+    "worktreeAndExtractedTests": "passed before publication; downloaded archive identical to tested archive",
+    "worktreeAndExtractedOnlineAudit": "zero vulnerabilities before publication; exact dependency lock retained",
+    "publishedVerifier": "passed using reviewed external lock anchor",
+    "verifierPublicationField": "not-performed describes verifier operation; GitHub establishes publication separately"
+  },
+  "remaining": [
+    "consumer released provenance transition",
+    "current packaged live acceptance profile",
+    "packaged room-stack and rendered-browser verification",
+    "separately authorized live provider verification",
+    "image publication and production acceptance"
+  ]
+}
