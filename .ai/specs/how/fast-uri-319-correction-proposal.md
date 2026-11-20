@@ -67,3 +67,28 @@ Run the extracted archive's complete tests and audit too. Retain any earlier
 3.1.8 artifacts as blocked diagnostic evidence; never publish them as passing
 release inputs. Only the newly verified concrete release package can be
 presented for separate publication approval.
+
+## Applied verification — 2026-11-20
+
+Approval was committed first at `a5c359f`; implementation source is
+`f1c8621810c8c121c1aafc8e5a342d6626c4b843`. The exact approved lock digest
+matches. Full tests pass in the release worktree and extracted archive:
+retained room validation, 125 conversation fixtures, 16 defaults fixtures,
+six candidate integrity tests and five release-preparation tests. Both online
+audits report zero vulnerabilities. Independent review confirmed only the
+three approved fields changed, without an actionable finding; dependency
+declarations, remaining lock entries and BSD-3-Clause license bytes match.
+
+Two clean-source preparations are byte-identical. Intended v1.1 TAR SHA-256 is
+`b0370e43627ce6044852df75bfbc4b749d904aa9cedcfc558c61bb4e07dc95ff`;
+release lock SHA-256 is
+`b7f3ad928c5c17be7e936da4959b7e7e8555bb4ed3602fa62f71a8721f042d8f`.
+All 156 approved candidate payload hashes and 135 retained v1.0 schema/fixture
+hashes are preserved. The earlier 3.1.8 diagnostic artifacts remain blocked
+historical evidence. Corrected inputs and publication-review notes are retained
+under `/private/tmp/thoughtkhoral-task9-v1.1-corrected-20261120/`.
+
+This closes the local dependency correction and release-input verification,
+not source/tag/release publication, consumer transition or Task 9 acceptance.
+The frozen release source is `f1c8621`; this later evidence record changes only
+documentation and does not change that source archive's identity.

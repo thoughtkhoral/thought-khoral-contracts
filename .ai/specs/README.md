@@ -34,6 +34,14 @@ unmerged and pending-push wording is historical.
 
 ## Approved Codex room-participation extension
 
+Current local release checkpoint — 2026-11-20: approved correction source
+`f1c8621` passes worktree/extracted full suites and both online audits with zero
+vulnerabilities. Repeated release TAR/lock builds are identical and the 156
+candidate payload/135 retained v1.0 schema and fixture hashes match. See the
+[owning acceptance record](how/fast-uri-319-correction-proposal.md#applied-verification--2026-11-20).
+This is local branch evidence; no v1.1 tag, release, consumer transition or
+packaged/live acceptance is claimed.
+
 - [What: conversation profile](what/conversation-profile.md)
 - [How: conversation profile](how/agent-conversation-profile.md)
 - [Coordinated implementation plan](https://github.com/thoughtkhoral/thought-khoral/blob/main/.ai/specs/how/codex-room-conversations-implementation-plan.md)

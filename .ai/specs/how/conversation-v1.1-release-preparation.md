@@ -18,6 +18,10 @@ The v1.0 shared oracle's additive defaults validation is already reviewed in the
 candidate; it is not an unchanged-v1.0 oracle claim. No schema, fixture,
 dependency, retained room contract or candidate builder changes are authorized.
 
+The subsequently [approved fast-uri 3.1.9 correction](fast-uri-319-correction-proposal.md)
+is the sole bounded dependency exception to that initial scope. Its exact lock,
+source ordering and final verification are recorded in the owning correction.
+
 ## Local preparer and release lock
 
 Add `scripts/prepare-conversation-release.py` using only the Python standard
