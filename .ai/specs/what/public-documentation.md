@@ -1,20 +1,53 @@
-# Contracts public documentation
+# Contracts documentation requirements
 
-## Status
+## Status and authority
 
-Approved
+Approved documentation scope, refreshed by the maintainer's 2026-11-20 request
+to update documentation specifications before derived pages at workspace and
+individual-project level. This supersedes stale scaffold/MVP-only documentation
+criteria, without changing approved runtime requirements or acceptance gates.
 
-## Purpose
+Read the [local specification index](../README.md), [component requirements](conversation-profile.md)
+and [implementation design](../how/agent-conversation-profile.md) first. Root
+[documentation requirements](https://github.com/thoughtkhoral/thought-khoral/blob/main/.ai/specs/what/open-source-documentation.md)
+and [current workspace authority](https://github.com/thoughtkhoral/thought-khoral/blob/main/.ai/specs/how/workspace-state.md)
+apply. Documentation cannot approve implementation, publication or activation.
 
-Explain how protocol integrators find, validate, and consume the retained v1
-contract artifacts without treating this repository as a runtime library.
+## Maintained documentation set
+
+| Page | Required role |
+| --- | --- |
+| [Repository README](../../../README.md) | Purpose, maturity, prerequisites, valid commands, compatibility and source links. |
+| [Project documentation index](../../../docs/README.md) | Local documentation entrypoint mapping maintained pages to their governing specs and checkout applicability. |
+| [Protocol and compatibility](../../../protocol.md) | Versioned room and conversation interfaces, additive defaults, fixture semantics and immutable compatibility. |
+| [Published release evidence](../../../docs/evidence/conversation-v1.1-publication-2026-11-20.json) | Exact tag/source/asset identities and fresh-download verification. |
 
 ## Acceptance criteria
 
-- The README identifies this repository as the compatibility authority.
-- The README gives a clean validation command and links to `protocol.md`,
-  schemas, fixtures, release tags, and the project specification index.
-- Documentation distinguishes retained v1 wire identifiers from the
-  ThoughtKhoral product identity.
-- Contract changes describe compatibility and release impact through the
-  issue-first workflow.
+- Update applicable documentation specs and accepted evidence first, then
+  maintain these authored Markdown pages. CI validates; it does not generate
+  prose or rewrite specifications.
+- Map each maintained page to its governing local What/How, and link from the
+  repository README to this documentation specification and the project index.
+- Identify canonical runtime versus prepared-branch applicability. Documentation
+  HEADs, published artifacts and frozen runtime acceptance inputs are distinct;
+  do not repin a tested source because a prose-only followup advanced HEAD.
+- Explain compatibility authority and artifact consumption without presenting a shared runtime library.
+- Distinguish published v1.0/v1.1 artifacts from retained synthetic-candidate metadata, and distinguish the release branch from canonical main tooling.
+- Give validation prerequisites and commands that exist in the current checkout; identify the exact tagged source for release-preparation verification when its tooling is not integrated.
+- State independent archive/lock/per-file digest verification and publication approval; never rewrite immutable release or candidate payloads through documentation.
+- Preserve historical evidence and existing anchors. Attribute results to exact
+  source/image/contract inputs and distinguish implemented, verified, published,
+  enabled and production-ready states.
+- Keep private configuration, provider keys, human tokens, native sessions and
+  room contents outside docs and fixtures. Preserve licenses and legal notices.
+- Direct contributions through the issue/specification workflow and private
+  security-reporting policy. Validate links, source references and whitespace;
+  run any additional checks required by this project's agent instructions.
+
+## Verification boundary
+
+Documentation checks establish discoverability and consistency, not runtime,
+network, browser or provider acceptance. Fresh verification must name what was
+actually run; retained results keep their original source identity. Current
+state comes from approved component/root evidence, not the age of this file.
