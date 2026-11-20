@@ -62,6 +62,15 @@ payload comparison, v1.0 schema/fixture preservation, legal/license review and
 source-publication status. The full TAR includes verifier tooling and public
 documentation; only the fixed payload subset belongs in consumer vendors.
 
+For self-contained extracted-archive tests, retain the reviewed candidate's
+156 payload hashes and all 135 published-v1.0 schema/fixture hashes in
+`scripts/conversation-v1.1-payload-pins.json`. Bind that file with a SHA-256
+literal in the preparer. These hashes are independently extracted from the
+two exact approved Git commits during preparation; neither operators nor
+tests may override the anchor. Preparation compares the selected source to
+these hashes without depending on historical Git objects being installed.
+Tests create and commit clean synthetic source snapshots from packaged files.
+
 Write review notes beside the assets with explicit unpublished status. Public
 notes contain no credentials or private state. Publication approval must name
 the actual source commit, intended tag and asset hashes. Only after publication
