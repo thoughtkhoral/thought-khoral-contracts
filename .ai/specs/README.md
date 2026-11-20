@@ -1,12 +1,30 @@
 # ThoughtKhoral contracts specifications
 
+## Current workspace state — 2026-11-20
+
+Conversation v1.1.0 is published at frozen source `f1c8621810c8c121c1aafc8e5a342d6626c4b843`; the TAR, lock, sidecar and all 156 payload hashes were verified from a fresh download. The source includes the approved fast-uri 3.1.9 correction and passing source/extracted tests and online audits. The original synthetic candidate keeps its immutable candidate metadata; v1.0 artifacts are unchanged.
+
+This is the published release/evidence branch. The tag remains fixed at
+`f1c8621`; later documentation commits do not retarget or rebuild that release.
+
+- [How: conversation v1.1 release preparation](how/conversation-v1.1-release-preparation.md)
+- [How: fast uri 319 correction proposal](how/fast-uri-319-correction-proposal.md)
+
+See the [root workspace authority](https://github.com/thoughtkhoral/thought-khoral/blob/main/.ai/specs/how/workspace-state.md) for exact source/release
+identities, preserved source snapshots and remaining gates. Documentation-only
+HEADs are not substitutions for frozen acceptance commits. Earlier dated
+checkpoints retain their historical evidence; no runtime suite was rerun for
+this prose refresh.
+
 Parent requirements in the ThoughtKhoral root `.ai/specs/` apply here. This project may diverge only through an accepted local decision record that identifies the overridden parent rule and its consequences.
 
 See the [root specification index](https://github.com/thoughtkhoral/thought-khoral/blob/main/.ai/specs/README.md).
 
 For the coordinated Codex conversation status across all projects, see the [shared status guide](https://github.com/thoughtkhoral/thought-khoral/blob/main/docs/codex-conversation-status.md).
 
-## Current verification boundary — 2026-11-19
+<a id="current-verification-boundary--2026-11-19"></a>
+
+## Historical verification boundary — 2026-11-19
 
 The published conversation v1.0.0 release remains immutable. The reviewed
 v1.1 defaults-discovery source is on GitHub `main`, but its candidate artifact
