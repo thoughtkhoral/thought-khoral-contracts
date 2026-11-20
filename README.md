@@ -89,9 +89,15 @@ This implementation is prepared under [accepted issue 1](https://github.com/thou
 The [published `thought-khoral-agent-conversation-v1.0.0` release](https://github.com/thoughtkhoral/thought-khoral-contracts/releases/tag/thought-khoral-agent-conversation-v1.0.0)
 was authorized on 2026-10-05 at `85baf86e574276fcd036e53e23641af6aad602f9`;
 its TAR SHA-256 is `0038fdbf858db013c4a269aeedbca51a5db9128a2f1d6e39754f92ba60fd8f36`.
-Consumers pin that immutable release and verify its archive. The additive v1.1
-defaults artifact below remains unreleased; source publication on `main` does
-not publish a contract release. See the [owning specification checkpoint](.ai/specs/README.md#published-conversation-artifact).
+Consumers pin that immutable release and verify its archive. The additive
+[v1.1.0 release](https://github.com/thoughtkhoral/thought-khoral-contracts/releases/tag/thought-khoral-agent-conversation-v1.1.0)
+was published on 2026-11-20 at `f1c8621810c8c121c1aafc8e5a342d6626c4b843`.
+Its TAR SHA-256 is `b0370e43627ce6044852df75bfbc4b749d904aa9cedcfc558c61bb4e07dc95ff`;
+release-lock SHA-256 is `b7f3ad928c5c17be7e936da4959b7e7e8555bb4ed3602fa62f71a8721f042d8f`.
+Fresh downloads and all 156 payload hashes verify. See the
+[retained publication evidence](docs/evidence/conversation-v1.1-publication-2026-11-20.json).
+Consumer transition remains separately verified; the original synthetic
+candidate below keeps its immutable unreleased-candidate metadata.
 
 ### Unreleased defaults candidate
 

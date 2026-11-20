@@ -92,3 +92,19 @@ This closes the local dependency correction and release-input verification,
 not source/tag/release publication, consumer transition or Task 9 acceptance.
 The frozen release source is `f1c8621`; this later evidence record changes only
 documentation and does not change that source archive's identity.
+
+## Authorized publication checkpoint
+
+The maintainer subsequently authorized the concrete source/tag/release action
+with “proceed”. The source branch and annotated v1.1.0 tag are published, with
+the tag independently verified to peel to frozen source `f1c8621`. GitHub
+release `452810808` was published at `2026-11-20T14:44:18Z` with exactly the
+reviewed TAR, lock and digest sidecar. Fresh downloads match both reviewed
+digests and all 156 payload hashes; the verifier from the downloaded archive
+passes using the external reviewed lock anchor. Its `publication: not-performed`
+field describes that verifier command, not the separately established release.
+
+The [retained publication manifest](../../../docs/evidence/conversation-v1.1-publication-2026-11-20.json)
+records the annotated tag object, peeled source, release ID and asset IDs/URLs/
+digests. No artifact was overwritten and frozen tag source remains unchanged.
+Consumer adoption and Task 9 packaged/browser/live gates remain open.

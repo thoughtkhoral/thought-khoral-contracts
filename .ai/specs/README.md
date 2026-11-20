@@ -22,6 +22,20 @@ live-provider, v1.1 publication or production/release acceptance. Earlier dated
 checkpoints below preserve the state at their recording time; their local-only,
 unmerged and pending-push wording is historical.
 
+## Published v1.1 checkpoint — 2026-11-20
+
+The maintainer authorized publication with “proceed” after review of the exact
+source and assets. Source branch `codex/task9-contract-release-20261120` and
+annotated tag `thought-khoral-agent-conversation-v1.1.0` are published; the tag
+peels to `f1c8621810c8c121c1aafc8e5a342d6626c4b843`. The
+[release](https://github.com/thoughtkhoral/thought-khoral-contracts/releases/tag/thought-khoral-agent-conversation-v1.1.0)
+contains the reviewed TAR, lock and sidecar. Fresh downloads match the approved
+hashes and all 156 payload entries. The [retained evidence](../../docs/evidence/conversation-v1.1-publication-2026-11-20.json)
+records immutable tag/source/release/asset IDs. This supersedes older pending
+v1.1 publication wording; synthetic-candidate locks remain unchanged. No merge
+to contracts `main`, consumer adoption, packaged/browser/live acceptance or
+provider activation is claimed.
+
 ## Local areas
 
 - [How: approved local v1.1 release preparation](how/conversation-v1.1-release-preparation.md) — publication remains separately gated.
