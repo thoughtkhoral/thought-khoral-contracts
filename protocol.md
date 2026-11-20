@@ -1,5 +1,17 @@
 # ThoughtKhoral room protocol v1
 
+## Current workspace context — 2026-11-20
+
+Conversation v1.1.0 is published at frozen source `f1c8621810c8c121c1aafc8e5a342d6626c4b843`; the TAR, lock, sidecar and all 156 payload hashes were verified from a fresh download. The source includes the approved fast-uri 3.1.9 correction and passing source/extracted tests and online audits. The original synthetic candidate keeps its immutable candidate metadata; v1.0 artifacts are unchanged.
+
+This is the published release/evidence branch. The tag remains fixed at
+`f1c8621`; later documentation commits do not retarget or rebuild that release.
+
+Derived from the [local specification index](.ai/specs/README.md) and
+[root workspace authority](https://github.com/thoughtkhoral/thought-khoral/blob/main/.ai/specs/how/workspace-state.md).
+The cited tests retain their original source identities; this documentation
+refresh adds no activation, publication or runtime acceptance.
+
 `n2n.room.v1` defines JSON-RPC 2.0 room requests and normalized, immutable room events. Every request has `jsonrpc: "2.0"`, a non-empty string `id`, a supported `method`, and object `params`. The connection-establishment request `session.authenticate` has only a non-empty `accessToken`; authenticated room-operation payloads include `contractVersion: "n2n.room.v1"`, UUID `requestId`, UUID `roomId`, and RFC 3339 `occurredAt`.
 
 ## Methods
