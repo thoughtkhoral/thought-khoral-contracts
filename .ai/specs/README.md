@@ -25,6 +25,7 @@ unmerged and pending-push wording is historical.
 ## Local areas
 
 - [How: approved local v1.1 release preparation](how/conversation-v1.1-release-preparation.md) — publication remains separately gated.
+- [Proposed audit correction: fast-uri 3.1.9](how/fast-uri-319-correction-proposal.md) — isolated candidate passes; dependency exception awaits approval.
 - [What: MVP contracts](what/mvp-contracts.md)
 - [What: public documentation](what/public-documentation.md)
 - [How: implementation](how/implementation.md)

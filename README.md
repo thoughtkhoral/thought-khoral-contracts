@@ -127,3 +127,33 @@ Verification rejects archive/payload changes, unexpected files, symlinks and
 altered or additional metadata. The sidecar is evidence, while the independently
 pinned digest establishes the consumer's trust. This exception permits only
 isolated pre-publication development and synthetic tests.
+
+### Local v1.1 release preparation
+
+The [approved release preparation How](.ai/specs/how/conversation-v1.1-release-preparation.md)
+defines a separate local preparer. From a clean committed checkout:
+
+```sh
+python3 scripts/prepare-conversation-release.py --commit HEAD --output /private/tmp/conversation-release-inputs
+```
+
+It produces the intended release TAR, closed `lock.json`, external digest
+sidecar and exact vendor payload, without creating a tag, release or network
+request. The payload must match the approved defaults candidate; every existing
+v1.0 schema/fixture remains unchanged. Output explicitly reports
+`publication: not-performed`. The lock's intended release URL is not evidence
+that an asset exists there. Consumers must wait for authorized publication and
+download verification before adopting it.
+
+Verify using the independent digest reported by the reviewed preparation:
+
+```sh
+python3 scripts/prepare-conversation-release.py --help
+```
+
+The verification invocation is `--verify DIRECTORY --lock-sha256 DIGEST`, with
+the actual prepared directory and externally reviewed lock digest. Verification
+rejects archive/vendor drift, extra or missing files, symlinks and metadata
+tampering. `npm test` includes candidate and release-preparation integrity tests;
+Python 3 and Git are required as well as Node/npm. Extracted-archive tests create
+their own temporary Git histories and need no upstream history or provider.

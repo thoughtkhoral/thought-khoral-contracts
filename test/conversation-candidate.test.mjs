@@ -60,8 +60,8 @@ test('builds committed source twice with identical archive, closed lock and exac
   assert.equal(lock.archiveSha256, sha256(archive));
   assert.deepEqual(Object.keys(lock.files), Object.keys(lock.files).sort());
   for (const [path, hash] of Object.entries(lock.files)) {
-    const committed = spawnSync('git', ['show', `${commit}:${path}`], { cwd: repository });
-    assert.equal(committed.status, 0);
+    const committed = spawnSync('git', ['show', `${commit}:${path}`], { cwd: repository, maxBuffer: 2 * 1024 * 1024 });
+    assert.equal(committed.status, 0, committed.error?.message || committed.stderr?.toString());
     assert.equal(hash, sha256(committed.stdout), path);
     assert.deepEqual(await readFile(join(candidate, 'vendor', path)), committed.stdout, path);
   }
