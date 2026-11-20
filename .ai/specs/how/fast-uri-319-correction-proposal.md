@@ -1,10 +1,10 @@
-# Proposed release audit correction: fast-uri 3.1.9
+# Approved release audit correction: fast-uri 3.1.9
 
-Status: proposed on 2026-11-20 after the online release audit failed. The
-[approved release preparation scope](conversation-v1.1-release-preparation.md)
-excludes dependency changes. This concrete exception requires maintainer
-approval before changing this checkout's lock. No exception is presumed from
-the earlier Task 9 approval. Publication remains a separate later action.
+Status: approved by the maintainer's “approve” on 2026-11-20 after review of
+this exact correction and its isolated passing candidate. This is the bounded
+dependency exception to the [release preparation scope](conversation-v1.1-release-preparation.md).
+Record this approval before changing the lock. Publication remains a separate
+later action; the earlier Task 9 approval alone did not grant this exception.
 
 ## Finding and exact correction
 
